@@ -38,37 +38,13 @@ class arInformationObjectCsvExportJob extends arBaseJob
 
   public function runJob($parameters)
   {
-    $this->params = $parameters;
-
-    // If not using RAD, default to ISAD CSV export format
-    $this->archivalStandard = 'isad';
-    if (QubitSetting::getByNameAndScope('informationobject', 'default_template') == 'rad')
-    {
-      $this->archivalStandard = 'rad';
-    }
-
-    // Create query increasing limit from default
-    $this->search = new arElasticSearchPluginQuery(1000000000);
-
-    if ($this->params['params']['fromClipboard'])
-    {
-      $this->search->queryBool->addMust(new \Elastica\Query\Terms('slug', $this->params['params']['slugs']));
-    }
-    else
-    {
-      $this->search->addFacetFilters(InformationObjectBrowseAction::$FACETS, $this->params['params']);
-      $this->search->addAdvancedSearchFilters(InformationObjectBrowseAction::$NAMES, $this->params['params'], $this->archivalStandard);
-    }
-
-    $this->search->query->setSort(array('lft' => 'asc'));
-
     // Create temp directory in which CSV export files will be written
     $tempPath = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'search_export_'. $this->job->id;
     mkdir($tempPath);
 
     // Export CSV to temp directory
     $this->info($this->i18n->__('Starting export to %1.', array('%1' => $tempPath)));
-    $itemsExported = $this->exportResults($tempPath);
+    $itemsExported = $this->exportResults($parameters, $tempPath, $this);
     $this->info($this->i18n->__('Exported %1 descriptions.', array('%1' => $itemsExported)));
 
     if ($itemsExported)
@@ -99,32 +75,87 @@ class arInformationObjectCsvExportJob extends arBaseJob
   }
 
   /**
-   * Export search results as CSV
+   * Get the current archival standard
    *
-   * @param string  Path of file to write CSV data to
+   * @return arElasticSearchPluginQuery  AtoM Elasticsearch query
+   */
+  static public function getCurrentArchivalStandard()
+  {
+    // If not using RAD, default to ISAD CSV export format
+    $archivalStandard = 'isad';
+    if (QubitSetting::getByNameAndScope('informationobject', 'default_template') == 'rad')
+    {
+      $archivalStandard = 'rad';
+    }
+
+    return $archivalStandard;
+  }
+
+  /**
+   * Create AtoM Elasticsearch query from export parameters
+   *
+   * @param array $parameters  Export parameters
+   *
+   * @return arElasticSearchPluginQuery  AtoM Elasticsearch query
+   */
+  static public function searchFromParameters($parameters)
+  {
+    // Create query increasing limit from default
+    $search = new arElasticSearchPluginQuery(1000000000);
+
+    if ($parameters['params']['fromClipboard'])
+    {
+      $search->queryBool->addMust(new \Elastica\Query\Terms('slug', $parameters['params']['slugs']));
+    }
+    else
+    {
+      $search->addFacetFilters(InformationObjectBrowseAction::$FACETS, $parameters['params']);
+      $search->addAdvancedSearchFilters(
+        InformationObjectBrowseAction::$NAMES,
+        $parameters['params'],
+        self::getCurrentArchivalStandard()
+      );
+    }
+
+    $search->query->setSort(array('lft' => 'asc'));
+
+    return $search;
+  }
+
+  /**
+   * Return search result count and, optionally, export search results
+   *
+   * @param array $parameters  Export parameters
+   * @param string $path  Path of file to write CSV data to
+   * @param arInformationObjectCsvExportJob $job  Job object for logging progress
    *
    * @return int  Number of descriptions exported
    */
-  protected function exportResults($path)
+  static public function exportResults($parameters, $path = false, $job = false)
   {
     $itemsExported = 0;
-    $public = isset($this->params['public']) && $this->params['public'];
-    $levels = isset($this->params['levels']) ? $this->params['levels'] : array();
+    $public = isset($parameters['public']) && $parameters['public'];
+    $levels = isset($parameters['levels']) ? $parameters['levels'] : array();
     $numLevels = count($levels);
 
-    // Exporter will create a new file each 10,000 rows
-    $writer = new csvInformationObjectExport($path, $this->archivalStandard, 10000);
+    // If no path supplied, don't set up an export
+    if ($path)
+    {
+      // Exporter will create a new file each 10,000 rows
+      $writer = new csvInformationObjectExport($path, self::getCurrentArchivalStandard(), 10000);
 
-    // store export options for use in csvInformationObjectExport
-    $writer->setOptions($this->params);
+      // store export options for use in csvInformationObjectExport
+      $writer->setOptions($parameters);
 
-    // Force loading of information object configuration, then modify writer
-    // configuration
-    $writer->loadResourceSpecificConfiguration('QubitInformationObject');
-    array_unshift($writer->columnNames, 'referenceCode');
-    array_unshift($writer->standardColumns, 'referenceCode');
+      // Force loading of information object configuration, then modify writer
+      // configuration
+      $writer->loadResourceSpecificConfiguration('QubitInformationObject');
+      array_unshift($writer->columnNames, 'referenceCode');
+      array_unshift($writer->standardColumns, 'referenceCode');
+    }
 
-    $resultSet = QubitSearch::getInstance()->index->getType('QubitInformationObject')->search($this->search->getQuery(false, false));
+    $search = self::searchFromParameters($parameters);
+    $resultSet = QubitSearch::getInstance()->index->getType('QubitInformationObject')->search($search->getQuery(false, false));
 
     foreach ($resultSet as $hit)
     {
@@ -141,21 +172,24 @@ class arInformationObjectCsvExportJob extends arBaseJob
           continue;
         }
 
-        $writer->exportResource($resource);
-
-        // export descendants if configured
-        if (!$this->params['current-level-only'])
+        if ($path)
         {
-          foreach ($resource->getDescendantsForExport($this->params) as $descendant)
+          $writer->exportResource($resource);
+
+          // export descendants if configured
+          if (!$parameters['current-level-only'])
           {
-            $writer->exportResource($descendant);
+            foreach ($resource->getDescendantsForExport($parameters) as $descendant)
+            {
+              $writer->exportResource($descendant);
+            }
           }
         }
 
         // Log progress every 1000 rows
-        if ($itemsExported && ($itemsExported % 1000 == 0))
+        if ($job && $itemsExported && ($itemsExported % 1000 == 0))
         {
-          $this->info($this->i18n->__('%1 items exported.', array('%1' => $itemsExported)));
+          $job->info($job->i18n->__('%1 items exported.', array('%1' => $itemsExported)));
         }
 
         $itemsExported++;

@@ -13,13 +13,6 @@
 
 <?php slot('content') ?>
 
-  <?php if ($sf_user->hasFlash('error')): ?>
-    <div class="messages error">
-      <h3><?php echo __('Error encountered') ?></h3>
-      <div><?php echo $sf_user->getFlash('error', ESC_RAW) ?></div>
-    </div>
-  <?php endif; ?>
-
   <?php echo $form->renderFormTag(url_for(array('module' => 'object', 'action' => 'export'))) ?>
 
     <?php echo $form->renderHiddenFields() ?>
