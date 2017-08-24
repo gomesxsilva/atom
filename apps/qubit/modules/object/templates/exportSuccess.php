@@ -37,6 +37,11 @@
         <div class="form-item">
           <div class="panel panel-default" id="exportOptions">
             <div class="panel-body">
+              <label>
+                <input name="includeAllLevels" type="checkbox"/>
+                <?php echo __('Include objects contained in clipboard') ?>
+              </label>
+
               <div class="generic-help-box">
                 <label class="generic-help-type">
                   <input name="includeDescendants" type="checkbox"/>
@@ -51,19 +56,16 @@
                   <?php echo __('Include draft records') ?>
                 </label>
               <?php endif; ?>
-              <label>
-                <input name="includeAllLevels" type="checkbox"/>
-                <?php echo __('Include all levels of description') ?>
-              </label>
               <div class="hidden" id="exportLevels">
                 <?php echo $form->levels
-                  ->label(__('Levels of description'))
+                  ->label(__('Select levels of description for inclusion'))
                   ->help(__('Select the levels of description to be included in the export. If no levels are selected, the export will fail. You can use the control (Mac ⌘) and/or shift keys to multi-select values from the Levels of description menu. Descriptions that are descendants of levels not included in the export will also be excluded.'))
                   ->renderRow() ?>
               </div>
             </div>
 
             <div class="alert alert-info generic-help animateNicely">
+              <p><?php echo __('Choosing "Include objects contained in clipboard" will include all clipboard objects.') ?></p>
               <p><?php echo __('Choosing "Include descendants" will include all lower-level records beneath those currently on the clipboard in the export.') ?></p>
               <?php if ($sf_user->isAuthenticated()): ?>
                 <p><?php echo __('Choosing "Include draft records" will include those marked with a Draft publication status in the export. Note: if you do NOT choose this option, any descendants of a draft record will also be excluded, even if they are published.') ?></p>
