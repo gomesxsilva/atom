@@ -59,7 +59,7 @@
               <div class="hidden" id="exportLevels">
                 <?php echo $form->levels
                   ->label(__('Select levels of description for inclusion'))
-                  ->help(__('Select the levels of description to be included in the export. If no levels are selected, the export will fail. You can use the control (Mac ⌘) and/or shift keys to multi-select values from the Levels of description menu. Descriptions that are descendants of levels not included in the export will also be excluded.'))
+                  ->help(__('Select the levels of description to be included in the export. If no levels are selected, the export will fail. You can use the control (Mac ⌘) and/or shift keys to multi-select values from the Levels of description menu. It is necessary to include the level(s) above the desired export level, up to and including the level contained in the clipboard. Otherwise, no records will be included in the export.'))
                   ->renderRow() ?>
               </div>
             </div>
