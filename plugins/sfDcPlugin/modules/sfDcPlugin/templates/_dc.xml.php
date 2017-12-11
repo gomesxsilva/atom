@@ -33,11 +33,10 @@
     <dc:type><?php echo esc_specialchars(strval($item)) ?></dc:type>
   <?php endforeach; ?>
 
-<?php
-  if (isset($resource->extentAndMedium)) {
-echo "<dc:format>";
-echo esc_specialchars(strval($resource->extentAndMedium));
-echo "</dc:format>";
+  <?php if (isset($resource->extentAndMedium)) {
+  echo "<dc:format>";
+  echo esc_specialchars(strval($resource->extentAndMedium));
+  echo "</dc:format>";
   }
   ?>
 
