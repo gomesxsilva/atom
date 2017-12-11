@@ -33,9 +33,13 @@
     <dc:type><?php echo esc_specialchars(strval($item)) ?></dc:type>
   <?php endforeach; ?>
 
-  <?php foreach ($dc->format as $item): ?>
-    <dc:format><?php echo esc_specialchars(strval($item)) ?></dc:format>
-  <?php endforeach; ?>
+<?php
+  if (isset($resource->extentAndMedium)) {
+echo "<dc:format>";
+echo esc_specialchars(strval($resource->extentAndMedium));
+echo "</dc:format>";
+  }
+  ?>
 
   <dc:identifier><?php echo esc_specialchars(sfConfig::get('app_siteBaseUrl') .'/'.$resource->slug) ?></dc:identifier>
 
