@@ -61,4 +61,31 @@
 
   <dc:rights><?php echo esc_specialchars(strval($resource->accessConditions)) ?></dc:rights>
 
+  <?php
+    foreach ($resource->digitalObjects as $digitalObject)
+    {
+      foreach ($dc->type as $registosonoro)
+      {
+      }
+    }
+    if (isset($resource->digitalObjects[0]) and $registosonoro != "sound")
+    {
+      echo "<dc:relation>";
+      if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on")
+      {
+        echo "https://";
+      }
+      else
+      {
+        echo "http://";
+      }
+      echo $sf_request->getHost() . $sf_request->getRelativeUrlRoot() . $digitalObject->path . $digitalObject->getChildByUsageId(QubitTerm::THUMBNAIL_ID);
+      echo "</dc:relation>";
+    }
+    elseif (isset($resource->digitalObjects[0]) and $registosonoro == "sound")
+    {
+      echo "<dc:relation>https://raw.githubusercontent.com/artefactual/atom/stable/2.4.x/images/generic-icons/audio.png</dc:relation>";
+    }
+  ?> 
+    
 </oai_dc:dc>
