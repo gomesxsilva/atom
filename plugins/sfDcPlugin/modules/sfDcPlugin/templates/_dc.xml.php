@@ -11,19 +11,19 @@
     <dc:creator><?php echo esc_specialchars(strval($item)) ?></dc:creator>
   <?php endforeach; ?>
 
-<?php
-    foreach ($dc->coverage as $locais)
+  <?php
+    foreach ($dc->subject as $assuntos)
     {
-      foreach ($resource->getCreators() as $produtor)
+      foreach ($dc->coverage as $locais)
       {
-        foreach ($dc->subject as $assuntos)
+        foreach ($resource->getCreators() as $produtor)
         {
         }
       }
     }
     if (isset($resource->scopeAndContent) or isset($locais) or isset($produtor) or isset($assuntos))
     {
-      echo "<dc:description>";
+      echo "<dc:subject>";
       echo esc_specialchars(strval($resource->scopeAndContent));
     }
     if (isset($resource->scopeAndContent))
@@ -37,7 +37,7 @@
     }
     if (isset($locais) and isset($produtor))
     {
-      echo "; ";
+      echo " • ";
     }
     if (isset($produtor))
     {
@@ -47,20 +47,20 @@
     }
     if (isset($produtor) and isset($assuntos) or isset($locais) and isset($assuntos))
     {
-      echo "; ";
+      echo " • ";
     }
     if (isset($assuntos))
     {
       echo "\n\nAssuntos: ";
       echo esc_specialchars(strval($assuntos));
     }
-    if (isset($locais) or isset($produtor) or isset($assuntos))
+    if (isset($produtor) or isset($assuntos))
     {
       echo ".";
     }
     if (isset($resource->scopeAndContent) or isset($locais) or isset($produtor) or isset($assuntos))
     {
-      echo "</dc:description>";
+      echo "</dc:subject>";
     }
   ?>
 
