@@ -11,9 +11,58 @@
     <dc:creator><?php echo esc_specialchars(strval($item)) ?></dc:creator>
   <?php endforeach; ?>
 
-  <?php foreach ($dc->subject as $item): ?>
-    <dc:subject><?php echo esc_specialchars(strval($item)) ?></dc:subject>
-  <?php endforeach; ?>
+<?php
+    foreach ($dc->coverage as $locais)
+    {
+      foreach ($resource->getCreators() as $produtor)
+      {
+        foreach ($dc->subject as $assuntos)
+        {
+        }
+      }
+    }
+    if (isset($resource->scopeAndContent) or isset($locais) or isset($produtor) or isset($assuntos))
+    {
+      echo "<dc:description>";
+      echo esc_specialchars(strval($resource->scopeAndContent));
+    }
+    if (isset($resource->scopeAndContent))
+    {
+      echo " •";
+    }
+    if (isset($locais))
+    {
+      echo "\n\nÁreas geográficas e topónimos: ";
+      echo esc_specialchars(strval($locais));
+    }
+    if (isset($locais) and isset($produtor))
+    {
+      echo "; ";
+    }
+    if (isset($produtor))
+    {
+      echo "\n\nPessoas: ";
+      echo esc_specialchars(strval($produtor));
+      echo " (Proveniência)";
+    }
+    if (isset($produtor) and isset($assuntos) or isset($locais) and isset($assuntos))
+    {
+      echo "; ";
+    }
+    if (isset($assuntos))
+    {
+      echo "\n\nAssuntos: ";
+      echo esc_specialchars(strval($assuntos));
+    }
+    if (isset($locais) or isset($produtor) or isset($assuntos))
+    {
+      echo ".";
+    }
+    if (isset($resource->scopeAndContent) or isset($locais) or isset($produtor) or isset($assuntos))
+    {
+      echo "</dc:description>";
+    }
+  ?>
 
   <dc:description><?php echo esc_specialchars(strval($resource->scopeAndContent)) ?></dc:description>
 
