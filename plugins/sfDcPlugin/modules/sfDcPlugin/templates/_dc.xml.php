@@ -37,48 +37,25 @@
     }
   ?>
 
-  <?php
+  <dc:subject><?php
+
+foreach ($dc->coverage as $locais)
+ {
+   }
     foreach ($dc->subject as $assuntos)
-    {
+ {
     }
-    foreach ($dc->coverage as $locais)
-    {
-    }
-    foreach ($resource->scopeAndContent as $ambito)
-    {
-    }
-    if (isset($ambito) or isset($locais) or isset($assuntos))
-    {
-      echo "<dc:subject>";
-      echo esc_specialchars(strval($resource->scopeAndContent));
-    }
-    if (isset($locais) and isset($resource->scopeAndContent) or ($assuntos) and isset($resource->scopeAndContent))
-    {
-      echo " •";
-    }
-    if (isset($locais))
-    {
-      echo "\n\nÁreas geográficas e topónimos: ";
-      echo esc_specialchars(strval($locais));
-    }
-    if (isset($locais) and isset($assuntos))
-    {
-      echo " • ";
-    }
-    if (isset($assuntos))
-    {
-      echo "\n\nAssuntos: ";
-      echo esc_specialchars(strval($assuntos));
-    }
-    if (isset($assuntos))
-    {
-      echo ".";
-    }
-    if (isset($ambito) or isset($locais) or isset($assuntos))
-    {
-      echo "</dc:subject>";
-    }
-  ?>
+echo esc_specialchars(strval($resource->scopeAndContent));
+
+if (isset($locais)) {
+echo " • Áreas geográficas e topónimos: ";
+echo esc_specialchars(strval($locais));
+}
+if (isset($assuntos)) {
+echo " • Assuntos: ";
+echo esc_specialchars(strval($assuntos));
+}
+?></dc:subject>
 
   <?php
     if (isset($resource->repository)) {
@@ -86,40 +63,40 @@
       echo esc_specialchars(strval($resource->repository->authorizedFormOfName));
       echo "</dc:publisher>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 9) == "PT/CMALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 9) == "PT CMALB") {
+    if (!isset($resource->repository->authorizedFormOfName) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 9) == "PT/CMALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 8) == "PT CMALB") {
       echo "<dc:publisher>Câmara Municipal de Albergaria-a-Velha</dc:publisher>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 9) == "PT/AMALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 9) == "PT AMALB ") {
+    if (!isset($resource->repository->authorizedFormOfName) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 9) == "PT/AMALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 8) == "PT AMALB ") {
       echo "<dc:publisher>Arquivo Municipal de Albergaria-a-Velha</dc:publisher>";
     }
   ?>
 
   <?php
-    foreach ($resource->getDates() as $item)
+    foreach ($resource->getDates() as $itema)
     {
-      foreach ($dc->date as $itemx)
-      {
-      }
     }
-    if (strlen(Qubit::renderDate($item->startDate)) > 4 and strlen(Qubit::renderDate($item->startDate)) < 10 and ($rest = substr(esc_specialchars(strval(Qubit::renderDate($item->startDate))), 3, 1) == "-" or $rest = substr(esc_specialchars(strval(Qubit::renderDate($item->startDate))), 4, 1) == "-" or $rest = substr(esc_specialchars(strval(Qubit::renderDate($item->startDate))), 6, 1) == "-"))
+    if (strlen(Qubit::renderDate($itema->startDate)) > 4 and strlen(Qubit::renderDate($itema->startDate)) < 10 and
+ ($rest = substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 3, 1) == "-" or $rest =
+substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == "-" or
+ $rest = substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 6, 1) == "-"))
     {
-      echo "<dc:date>" . date('Y-m-d', strtotime(Qubit::renderDate($item->startDate))) . "</dc:date>";
+      echo "<dc:date>" . date('Y-m-d', strtotime(Qubit::renderDate($itema->startDate))) . "</dc:date>";
     }
-    elseif (strlen(Qubit::renderDate($item->startDate)) == 3 and strlen(strval($itemx)) > 3 and $rest = substr(strval($itemx), 0, 1) == "[" and $rest = substr(strval($itemx), 4, 1) == "-")
+    elseif (strlen(Qubit::renderDate($itema->startDate)) == 3)
     {
-      echo "<dc:date>" . Qubit::renderDate($item->startDate) . "0" . "</dc:date>";
+      echo "<dc:date>" . Qubit::renderDate($itema->startDate) . "0" . "</dc:date>";
     }
-    elseif (strlen(Qubit::renderDate($item->startDate)) < 3)
+    elseif (strlen(Qubit::renderDate($itema->startDate)) < 3)
     {
     }
     else
     {
-      if (isset($item->startDate))
+      if (isset($itema->startDate))
       {
         echo "<dc:date>";
       }
-      echo Qubit::renderDate($item->startDate);
-      if (isset($item->startDate))
+      echo Qubit::renderDate($itema->startDate);
+      if (isset($itema->startDate))
       {
         echo "</dc:date>";
       }
@@ -127,31 +104,31 @@
   ?>
 
   <?php
-    foreach ($resource->getDates() as $item)
+    foreach ($resource->getDates() as $itemb)
     {
-      foreach ($dc->date as $itemx)
-      {
-      }
     }
-    if (strlen(Qubit::renderDate($item->endDate)) > 4 and strlen(Qubit::renderDate($item->endDate)) < 10 and ($rest = substr(esc_specialchars(strval(Qubit::renderDate($item->endDate))), 3, 1) == "-" or $rest = substr(esc_specialchars(strval(Qubit::renderDate($item->endDate))), 4, 1) == "-" or $rest = substr(esc_specialchars(strval(Qubit::renderDate($item->endDate))), 6, 1) == "-"))
+    if (strlen(Qubit::renderDate($itemb->endDate)) > 4 and strlen(Qubit::renderDate($item->endDate)) < 10 and
+($rest = substr(esc_specialchars(strval(Qubit::renderDate($itemb->endDate))), 3, 1) == "-" or $rest =
+ substr(esc_specialchars(strval(Qubit::renderDate($itemb->endDate))), 4, 1) == "-" or
+ $rest = substr(esc_specialchars(strval(Qubit::renderDate($itemb->endDate))), 6, 1) == "-"))
     {
-      echo "<dc:date>" . date('Y-m-d', strtotime(Qubit::renderDate($item->endDate))) . "</dc:date>";
+      echo "<dc:date>" . date('Y-m-d', strtotime(Qubit::renderDate($itemb->endDate))) . "</dc:date>";
     }
-    elseif (strlen(Qubit::renderDate($item->endDate)) == 3 and strlen(strval($itemx)) > 3 and $rest = substr(strval($itemx), 4, 2) == "-]")
+    elseif (strlen(Qubit::renderDate($itemb->endDate)) == 3)
     {
-      echo "<dc:date>" . Qubit::renderDate($item->endDate) . "0" . "</dc:date>";
+      echo "<dc:date>" . Qubit::renderDate($itemb->endDate) . "0" . "</dc:date>";
     }
-    elseif (strlen(Qubit::renderDate($item->endDate)) < 3)
+    elseif (strlen(Qubit::renderDate($itemb->endDate)) < 3)
     {
     }
     else
     {
-      if (isset($item->endDate))
+      if (isset($itemb->endDate))
       {
         echo "<dc:date>";
       }
-      echo Qubit::renderDate($item->endDate);
-      if (isset($item->endDate))
+      echo Qubit::renderDate($itemb->endDate);
+      if (isset($itemb->endDate))
       {
         echo "</dc:date>";
       }
@@ -163,21 +140,43 @@
     }
     foreach ($resource->getDates() as $item2) {
     }
+    $results = array();
+    preg_match('/[0-9]{4}/', strval($item1), $results);
     if (!isset($item1) and !isset($item2->startDate) and !isset($item2->endDate)) {
-      echo "<dc:date>[19--]</dc:date>";
+      echo "<dc:date>" . "1801" . "</dc:date>";
     }
-    if (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) or isset($item1) and isset($item2->startDate) and isset($item2->endDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->startDate) . "-" . Qubit::renderDate($item2->endDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->startDate) . " - " . Qubit::renderDate($item2->endDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->startDate) . "/" . Qubit::renderDate($item2->endDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->startDate) . " / " . Qubit::renderDate($item2->endDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->startDate) . "," . Qubit::renderDate($item2->endDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->startDate) . ", " . Qubit::renderDate($item2->endDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->startDate) . " " . Qubit::renderDate($item2->endDate) and esc_specialchars(strval($item1)) . esc_specialchars(strval($item1)) != Qubit::renderDate($item2->endDate) . Qubit::renderDate($item2->endDate) and esc_specialchars(strval($item1)) . esc_specialchars(strval($item1)) != Qubit::renderDate($item2->endDate) . "-" . Qubit::renderDate($item2->endDate) . "-" or isset($item1) and isset($item2->startDate) and !isset($item2->endDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->startDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->startDate) . "-" . Qubit::renderDate($item2->startDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->startDate) . " - " . Qubit::renderDate($item2->startDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->startDate) . "/" . Qubit::renderDate($item2->startDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->startDate) . " / " . Qubit::renderDate($item2->startDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->startDate) . "," . Qubit::renderDate($item2->startDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->startDate) . ", " . Qubit::renderDate($item2->startDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->startDate) . " " . Qubit::renderDate($item2->startDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->startDate) . "-" or isset($item1) and !isset($item2->startDate) and isset($item2->endDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->endDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->endDate) . "-" . Qubit::renderDate($item2->endDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->endDate) . " - " . Qubit::renderDate($item2->endDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->endDate) . "/" . Qubit::renderDate($item2->endDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->endDate) . " / " . Qubit::renderDate($item2->endDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->endDate) . "," . Qubit::renderDate($item2->endDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->endDate) . ", " . Qubit::renderDate($item2->endDate) and esc_specialchars(strval($item1)) != Qubit::renderDate($item2->endDate) . " " . Qubit::renderDate($item2->endDate)) {
-      if (strlen(Qubit::renderDate($item2->startDate)) > 6 and strlen(Qubit::renderDate($item2->startDate)) < 10 and strlen(Qubit::renderDate($item2->endDate)) > 6 and strlen(Qubit::renderDate($item2->endDate)) < 10 and strlen(date('Y-m-d', strtotime(Qubit::renderDate($item2->startDate)))) == 10 and strlen(date('Y-m-d', strtotime(Qubit::renderDate($item2->endDate)))) == 10 and esc_specialchars(strval($item1)) != date('Y-m-d', strtotime(Qubit::renderDate($item2->startDate))) . "-" . date('Y-m-d', strtotime(Qubit::renderDate($item2->endDate))) and esc_specialchars(strval($item1)) != date('Y-m-d', strtotime(Qubit::renderDate($item2->startDate))) . " - " . date('Y-m-d', strtotime(Qubit::renderDate($item2->endDate))) and esc_specialchars(strval($item1)) != date('Y-m-d', strtotime(Qubit::renderDate($item2->startDate))) . "/" . date('Y-m-d', strtotime(Qubit::renderDate($item2->endDate))) and esc_specialchars(strval($item1)) != date('Y-m-d', strtotime(Qubit::renderDate($item2->startDate))) . " / " . date('Y-m-d', strtotime(Qubit::renderDate($item2->endDate))) and esc_specialchars(strval($item1)) != date('Y-m-d', strtotime(Qubit::renderDate($item2->startDate))) . "," . date('Y-m-d', strtotime(Qubit::renderDate($item2->endDate))) and esc_specialchars(strval($item1)) != date('Y-m-d', strtotime(Qubit::renderDate($item2->startDate))) . ",  " . date('Y-m-d', strtotime(Qubit::renderDate($item2->endDate))) and esc_specialchars(strval($item1)) != date('Y-m-d', strtotime(Qubit::renderDate($item2->startDate))) . " " . date('Y-m-d', strtotime(Qubit::renderDate($item2->endDate)))) {
-        echo "<dc:date1>";
-        if ((strlen($item1) == 6 and substr_count($item1, "-") == 1 and substr(esc_specialchars(strval($item1)), 4, 1) == "-" and substr(esc_specialchars(strval($item1)), 0, 1) != "[") or (strlen($item1) == 7 and substr_count($item1, "-") == 1 and substr(esc_specialchars(strval($item1)), 4, 1) == "-") or (strlen($item1) > 7 and strlen($item1) < 11 and substr_count($item1, "-") == 2 and substr(esc_specialchars(strval($item1)), 4, 1) == "-") or (strlen($item1) > 7 and strlen($item1) < 11 and substr_count($item1, "/") == 2 and substr(esc_specialchars(strval($item1)), 4, 1) == "/") or (strlen($item1) > 7 and strlen($item1) < 11 and substr_count($item1, ".") == 2 and substr(esc_specialchars(strval($item1)), 4, 1) == ".") or (strlen($item1) > 7 and strlen($item1) < 11 and substr_count($item1, "-") == 2 and substr(esc_specialchars(strval($item1)), 1, 1) == "-") or (strlen($item1) > 7 and strlen($item1) < 11 and substr_count($item1, "/") == 2 and substr(esc_specialchars(strval($item1)), 1, 1) == "/") or (strlen($item1) > 7 and strlen($item1) < 11 and substr_count($item1, ".") == 2 and substr(esc_specialchars(strval($item1)), 1, 1) == ".") or (strlen($item1) > 7 and strlen($item1) < 11 and substr_count($item1, "-") == 2 and substr(esc_specialchars(strval($item1)), 2, 1) == "-") or (strlen($item1) > 7 and strlen($item1) < 11 and substr_count($item1, "/") == 2 and substr(esc_specialchars(strval($item1)), 2, 1) == "/") or (strlen($item1) > 7 and strlen($item1) < 11 and substr_count($item1, ".") == 2 and substr(esc_specialchars(strval($item1)), 2, 1) == ".")) {
-          echo date('Y-m-d', strtotime($item1));
-        } else {
-          echo esc_specialchars(strval($item1));
-        }
-        echo "</dc:date1>";
-      }
+    if (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and $rest = substr(esc_specialchars(strval($item1)), 0, 1) != "[") {
+      echo "<dc:date>" . $results[0] . "</dc:date>";
+    }
+    if (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and stripos(strtolower(strval($item1)), '--]') !== false) {
+      $resulti = array();
+      preg_match('/[0-9]{2}/', strval($item1), $resulti);
+      $tempo   = $rest = substr(esc_specialchars(strval($item1)), stripos(strtolower(strval($item1)), $resulti[0]), stripos(strtolower(strval($item1)), '--]') - stripos(strtolower(strval($item1)), $resulti[0])) . "00";
+      $resulty = array();
+      preg_match('/[0-9]{4}/', strval($tempo), $resulty);
+      echo "<dc:date>" . $resulty[0] . "</dc:date>";
+    } elseif (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and stripos(strtolower(strval($item1)), '-]') !== false) {
+      $resulta = array();
+      preg_match('/[0-9]{3}/', strval($item1), $resulta);
+      echo "<dc:date>" . $rest = substr(esc_specialchars(strval($item1)), stripos(strtolower(strval($item1)), $resulta[0]), stripos(strtolower(strval($item1)), '-]') - stripos(strtolower(strval($item1)), $resulta[0])) . "0" . "</dc:date>";
     }
   ?>
+
+  <?php
+    foreach ($dc->date as $item1) {
+    }
+    foreach ($resource->getDates() as $item2) {
+    }
+    $results = array();
+    preg_match('/[0-9]{4}/', strrev(strval($item1)), $results);
+    if (!isset($item1) and !isset($item2->startDate) and !isset($item2->endDate)) {
+      echo "<dc:date>" . "2000" . "</dc:date>";
+    }
+    if (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and $rest = substr(esc_specialchars(strval($item1)), 0, 1) != "[") {
+      echo "<dc:date>" . strrev($results[0]) . "</dc:date>";
+    }
+  ?>
+
 
   <?php
     if (isset($resource->levelOfDescription))
@@ -186,6 +185,10 @@
       if (strpos(strval($resource->levelOfDescription), 'ub') != true and (esc_specialchars(strval($resource->levelOfDescription)) == "Colecção" or $rest = substr(esc_specialchars(strval($resource->levelOfDescription)), -6) == " Fundo" or $rest = substr(esc_specialchars(strval($resource->levelOfDescription)), -6) == " fundo" or $rest = substr(esc_specialchars(strval($resource->levelOfDescription)), -8) == "gregação" or esc_specialchars(strval($resource->levelOfDescription)) == "Col. F"))
       {
         echo "Coleção";
+      }
+      elseif (strpos(strval($resource->levelOfDescription), 'colecção') != false)
+          {
+        echo substr(esc_specialchars(strval($resource->levelOfDescription)), 0, -9) . "coleção";
       }
       elseif (strpos(strval($resource->levelOfDescription), 'arquivo') != false)
       {
@@ -223,14 +226,7 @@
     }
   ?>
 
-  <?php
-    if (isset($resource->extentAndMedium))
-    {
-      echo "<dc:format>";
-      echo esc_specialchars(strval($resource->extentAndMedium));
-      echo "</dc:format>";
-    }
-  ?>
+  <dc:format><?php echo esc_specialchars(strval($resource->extentAndMedium)) ?></dc:format>
 
   <dc:identifier><?php
     if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on")
@@ -244,14 +240,7 @@
     echo esc_specialchars($sf_request->getHost() . $sf_request->getRelativeUrlRoot() . '/' . $resource->slug);
 ?></dc:identifier>
 
-  <?php
-    if (isset($resource->identifier))
-    {
-      echo "<dc:identifier>";
-      echo esc_specialchars(strval($dc->identifier));
-      echo "</dc:identifier>";
-    }
-  ?>
+  <dc:identifier><?php echo esc_specialchars(strval($dc->identifier)) ?></dc:identifier>
 
   <dc:language xsi:type="dcterms:ISO639-3"><?php foreach ($resource->language as $code) {} if (isset($code)) {echo esc_specialchars(strval(strtolower($iso639convertor->getID3($code)))); } else {echo "por";} ?></dc:language>
 
@@ -282,16 +271,9 @@
     }
   ?>
 
-  <?php
-    if (isset($resource->accessConditions))
-    {
-      echo "<dc:rights>";
-      echo esc_specialchars(strval($resource->accessConditions));
-      echo "</dc:rights>";
-    }
-  ?>
+  <dc:rights><?php echo esc_specialchars(strval($resource->accessConditions)) ?></dc:rights>
 
-  <?php
+<?php
     foreach ($resource->getCreators() as $item) {
     }
     if (isset($item)) {
@@ -318,7 +300,7 @@
       echo "<dc:creator>Assembleia Municipal de Albergaria-a-Velha</dc:creator>";
     }
     if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/CMALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB CMALB/") {
-      echo "<dc:creator>Câmara Municipal de Albergaria-a-Velha</dc:creator>";
+      echo "<dc:creator>Câmara Municipal de Albergaria-a-Velha. 1835-</dc:creator>";
     }
     if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/CMANG/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB CMANG/") {
       echo "<dc:creator>Câmara Municipal de Angeja</dc:creator>";
@@ -402,7 +384,7 @@
       echo "<dc:creator>O Arauto de Osseloa</dc:creator>";
     }
     if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/FAPS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB FAPS/") {
-      echo "<dc:creator>Fernando Augusto Pereira da Silva</dc:creator>";
+      echo "<dc:creator>Silva, Fernando Augusto Pereira da. 1954-2010, arqueólogo</dc:creator>";
     }
     if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/JFP/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB JFP/") {
       echo "<dc:creator>Pinto, João Ferreira. 1895-1961, fotógrafo amador</dc:creator>";
@@ -422,7 +404,7 @@
     if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/VFS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB VFS/") {
       echo "<dc:creator>Silva, Vicente Ferreira da. 1918-2008, encarregado geral</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT/CMALB/NI/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/RDALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/BPALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT CMALB NI/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB RDALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB BPALB/") {
+    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 11) == "PT/CMALB/NI" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/RDALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/BPALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 11) == "PT CMALB NI" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB RDALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB BPALB/") {
       echo "<dc:creator>Câmara Municipal de Albergaria-a-Velha. 1835-</dc:creator>";
     }
   ?>
