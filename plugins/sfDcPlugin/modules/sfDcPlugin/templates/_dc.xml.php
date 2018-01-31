@@ -145,7 +145,7 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     if (!isset($item1) and !isset($item2->startDate) and !isset($item2->endDate)) {
       echo "<dc:date>" . "1801" . "</dc:date>";
     }
-    if (!isset($item2->startDate) and !isset($item2->endDate) and $rest = substr(esc_specialchars(strval($item1)), 0, 1) != "[") {
+    if (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and $rest = substr(esc_specialchars(strval($item1)), 0, 1) != "[") {
       echo "<dc:date>" . $results[0] . "</dc:date>";
     }
     if (!isset($item2->startDate) and !isset($item2->endDate) and stripos(strtolower(strval($item1)), '--]') !== false) {
