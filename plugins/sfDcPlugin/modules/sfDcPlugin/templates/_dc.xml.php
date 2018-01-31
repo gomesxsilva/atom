@@ -71,7 +71,7 @@ echo esc_specialchars(strval($assuntos));
     }
   ?>
 
-  <?php
+<?php
     foreach ($resource->getDates() as $itema)
     {
     }
@@ -152,15 +152,11 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
       $resulti = array();
       preg_match('/[0-9]{2}/', strval($item1), $resulti);
       $tempo   = $rest = substr(esc_specialchars(strval($item1)), stripos(strtolower(strval($item1)),
- $resulti[0]), stripos(strtolower(strval($item1)), '--]') - stripos(strtolower(strval($item1)), $resulti[0])) . "01";
+ $resulti[0]), stripos(strtolower(strval($item1)), '--]') - stripos(strtolower(strval($item1)), $resulti[0])) . "00";
       $resulty = array();
       preg_match('/[0-9]{4}/', strval($tempo), $resulty);
-      echo "<dc:date>" . $resulty[0] . "</dc:date>";
- $tempest   = ($rest = substr(esc_specialchars(strval($item1)), stripos(strtolower(strval($item1)),
- $resulti[0]), stripos(strtolower(strval($item1)), '--]') - stripos(strtolower(strval($item1)), $resulti[0])) ) + 1 . "00";
-      $resultm = array();
-      preg_match('/[0-9]{4}/', strval($tempest), $resultm);
-      echo "<dc:date>" . $resultm[0] . "</dc:date>";
+      echo "<dc:date>" . ($resulty[0]+1) . "</dc:date>";
+      echo "<dc:date>" . ($resulty[0]+100) . "</dc:date>";
     } elseif (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and stripos(strtolower(strval($item1)), '-]') !== false) {
       $resulta = array();
       preg_match('/[0-9]{3}/', strval($item1), $resulta);
