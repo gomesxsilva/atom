@@ -283,25 +283,25 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
       echo esc_specialchars(strval($item));
       echo "</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/ACALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB ACALB/") {
+    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/ACALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB ACALB/") {
       echo "<dc:creator>Administração do Concelho de Albergaria-a-Velha. 1835-1927</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/ACANG/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB ACANG/") {
+    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/ACANG" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB ACANG") {
       echo "<dc:creator>Administração do Concelho de Angeja</dc:creator>";
     }
     if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/AMALB/RHALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT AMALB RHALB/") {
       echo "<dc:creator>Real Hospital de Albergaria-a-Velha</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 17) == "PT/CMALB/AFALB02/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 17) == "PT CMALB AFALB02/") {
+    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/AFALB02" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB AFALB02") {
       echo "<dc:creator>Assembleia de Freguesia de Alquerubim</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 17) == "PT/CMALB/AFALB05/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 17) == "PT CMALB AFALB05/") {
+    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/AFALB05" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB AFALB05") {
       echo "<dc:creator>Assembleia de Freguesia de Frossos</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/AMALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB AMALB/") {
+    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/AMALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB AMALB") {
       echo "<dc:creator>Assembleia Municipal de Albergaria-a-Velha</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/CMALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB CMALB/") {
+    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/CMALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB CMALB") {
       echo "<dc:creator>Câmara Municipal de Albergaria-a-Velha. 1835-</dc:creator>";
     }
     if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/CMANG/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB CMANG/") {
@@ -316,7 +316,7 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/CRJALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB CRJALB/") {
       echo "<dc:creator>Comissão de Recenseamento dos Jurados de Albergaria-a-Velha</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/CREALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB CREALB/") {
+    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/CREALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB CREALB/") {
       echo "<dc:creator>Comissão do Recenseamento Eleitoral de Albergaria-a-Velha</dc:creator>";
     }
     if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/CRMALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB CRMALB/") {
@@ -331,19 +331,19 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/CMHALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB CMHALB/") {
       echo "<dc:creator>Comissão Municipal de Higiene de Albergaria-a-Velha</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/CVCALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB CVCALB/") {
+    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/CVCALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB CVCALB/") {
       echo "<dc:creator>Comissão Venatória Concelhia de Albergaria-a-Velha</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/CNMALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB CNMALB/") {
+    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/CNMALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB CNMALB/") {
       echo "<dc:creator>Conselho Municipal de Albergaria-a-Velha</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 17) == "PT/CMALB/JFALB02/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 17) == "PT CMALB JFALB02/") {
+    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/JFALB02" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB JFALB02") {
       echo "<dc:creator>Junta de Freguesia de Alquerubim</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 17) == "PT/CMALB/JFALB04/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 17) == "PT CMALB JFALB04/") {
+    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/JFALB04" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB JFALB04") {
       echo "<dc:creator>Junta de Freguesia de Branca</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 17) == "PT/CMALB/JFALB05/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 17) == "PT CMALB JFALB05/") {
+    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/JFALB05" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB JFALB05") {
       echo "<dc:creator>Junta de Freguesia de Frossos</dc:creator>";
     }
     if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 19) == "PT/CMALB/EEPEALB02/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 19) == "PT CMALB EEPEALB02/") {
@@ -377,7 +377,7 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
       echo "<dc:creator>Cooperativa de Comunicação Social de Albergaria</dc:creator>";
     }
     if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/FMA/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB FMA/") {
-      echo "<dc:creator>Fábricas Metalúrgicas Alba</dc:creator>";
+      echo "<dc:creator>Augusto Martins Pereira, Herdeiros</dc:creator>";
     }
     if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/FGALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB FGALB/") {
       echo "<dc:creator>Foto Gomes. 1935-</dc:creator>";
@@ -391,10 +391,10 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/JFP/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB JFP/") {
       echo "<dc:creator>Pinto, João Ferreira. 1895-1961, fotógrafo amador</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/JGS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB JGS/") {
+    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/JGS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB JGS/") {
       echo "<dc:creator>Soares, João Gomes. 1882-1935, desenhador</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/JBSC/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB JBSC/") {
+    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/JBSC/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB JBSC/") {
       echo "<dc:creator>Cabral, José Bernardo da Silva. 1801-1869</dc:creator>";
     }
     if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT/CMALB/MS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT CMALB MS/") {
@@ -406,7 +406,7 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/VFS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB VFS/") {
       echo "<dc:creator>Silva, Vicente Ferreira da. 1918-2008, encarregado geral</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 11) == "PT/CMALB/NI" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/RDALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/BPALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 11) == "PT CMALB NI" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB RDALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB BPALB") {
+    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 11) == "PT/CMALB/NI" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/RDALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/BPALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/FALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 11) == "PT CMALB NI" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB RDALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB BPALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB FALB") {
       echo "<dc:creator>Câmara Municipal de Albergaria-a-Velha. 1835-</dc:creator>";
     }
   ?>
