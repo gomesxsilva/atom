@@ -190,7 +190,7 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
       }
       elseif (strpos(strval($resource->levelOfDescription), 'colecção') != false)
           {
-        echo substr(esc_specialchars(strval($resource->levelOfDescription)), 0, -9) . "coleção";
+        echo substr(esc_specialchars(strval($resource->levelOfDescription)), 0, -10) . "coleção";
       }
       elseif (strpos(strval($resource->levelOfDescription), 'arquivo') != false)
       {
