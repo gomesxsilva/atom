@@ -45,7 +45,7 @@ foreach ($dc->coverage as $locais)
     foreach ($dc->subject as $assuntos)
  {
     }
-echo esc_specialchars(strval($resource->scopeAndContent));
+echo str_replace("\n", " • ", esc_specialchars(strval($resource->scopeAndContent)));
 
 if (isset($locais)) {
 echo " • Áreas geográficas e topónimos: ";
