@@ -283,130 +283,130 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
       echo esc_specialchars(strval($item));
       echo "</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/ACALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB ACALB/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 5) == "ACALB") {
       echo "<dc:creator>Administração do Concelho de Albergaria-a-Velha. 1835-1927</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/ACANG" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB ACANG") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 5) == "ACANG") {
       echo "<dc:creator>Administração do Concelho de Angeja</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/AMALB/RHALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT AMALB RHALB/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 5) == "RHALB") {
       echo "<dc:creator>Real Hospital de Albergaria-a-Velha</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/AFALB02" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB AFALB02") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 7) == "AFALB02") {
       echo "<dc:creator>Assembleia de Freguesia de Alquerubim</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/AFALB05" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB AFALB05") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 7) == "AFALB05") {
       echo "<dc:creator>Assembleia de Freguesia de Frossos</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/AMALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB AMALB") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 5) == "AMALB") {
       echo "<dc:creator>Assembleia Municipal de Albergaria-a-Velha</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/CMALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB CMALB") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 5) == "CMALB") {
       echo "<dc:creator>Câmara Municipal de Albergaria-a-Velha. 1835-</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/CMANG/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB CMANG/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 5) == "CMANG") {
       echo "<dc:creator>Câmara Municipal de Angeja</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/CMPAU/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB CMPAU/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 5) == "CMPAU") {
       echo "<dc:creator>Câmara Municipal de Paus</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/CMPIN/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB CMPIN/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 5) == "CMPIN") {
       echo "<dc:creator>Câmara Municipal de Pinheiro</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/CRJALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB CRJALB/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 6) == "CRJALB") {
       echo "<dc:creator>Comissão de Recenseamento dos Jurados de Albergaria-a-Velha</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/CREALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB CREALB/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 6) == "CREALB") {
       echo "<dc:creator>Comissão do Recenseamento Eleitoral de Albergaria-a-Velha</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/CRMALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB CRMALB/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 6) == "CRMALB") {
       echo "<dc:creator>Comissão do Recenseamento Militar de Albergaria-a-Velha. 1888-1937</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 17) == "PT/CMALB/CMAAALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 17) == "PT CMALB CMAAALB/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 7) == "CMAAALB") {
       echo "<dc:creator>Comissão Municipal de Arte e Arqueologia de Albergaria-a-Velha. 1954-1977</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/CMAALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB CMAALB/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 6) == "CMAALB") {
       echo "<dc:creator>Comissão Municipal de Assistência de Albergaria-a-Velha</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/CMHALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB CMHALB/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 6) == "CMHALB") {
       echo "<dc:creator>Comissão Municipal de Higiene de Albergaria-a-Velha</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/CVCALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB CVCALB/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 6) == "CVCALB") {
       echo "<dc:creator>Comissão Venatória Concelhia de Albergaria-a-Velha</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/CNMALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB CNMALB/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 6) == "CNMALB") {
       echo "<dc:creator>Conselho Municipal de Albergaria-a-Velha</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/JFALB02" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB JFALB02") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 7) == "JFALB02") {
       echo "<dc:creator>Junta de Freguesia de Alquerubim</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/JFALB04" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB JFALB04") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 7) == "JFALB04") {
       echo "<dc:creator>Junta de Freguesia de Branca</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/JFALB05" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB JFALB05") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 7) == "JFALB05") {
       echo "<dc:creator>Junta de Freguesia de Frossos</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 19) == "PT/CMALB/EEPEALB02/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 19) == "PT CMALB EEPEALB02/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 9) == "EEPEALB02") {
       echo "<dc:creator>Escola de Ensino Primário Elementar da Freguesia de Alquerubim</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/EPVSR/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB EPVSR/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 5) == "EPVSR") {
       echo "<dc:creator>Escola Primária de Vilarinho de São Roque</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/CFRS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB CFRS/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 4) == "CFRS") {
       echo "<dc:creator>Comenda de Frossos</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT/CMALB/JOJPAU/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 16) == "PT CMALB JOJPAU/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 6) == "JOJPAU") {
       echo "<dc:creator>Juízo Ordinário do Julgado de Paus</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 17) == "PT/CMALB/AHBVALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 17) == "PT CMALB AHBVALB/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 7) == "AHBVALB") {
       echo "<dc:creator>Associação Humanitária dos Bombeiros Voluntários de Albergaria-a-Velha</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/CLA/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB CLA/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 3) == "CLA") {
       echo "<dc:creator>Clube de Albergaria</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/SCA/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB SCA/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 3) == "SCA") {
       echo "<dc:creator>Sport Clube Alba</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/CTA/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB CTA/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 3) == "CTA") {
       echo "<dc:creator>Cine-Teatro Alba, Lda.</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/CCC/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT  CMALB CCC/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 3) == "CCC") {
       echo "<dc:creator>Companhia de Celulose do Caima</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/CCSA/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB CCSA/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 4) == "CCSA") {
       echo "<dc:creator>Cooperativa de Comunicação Social de Albergaria</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/FMA/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB FMA/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 3) == "FMA") {
       echo "<dc:creator>Augusto Martins Pereira, Herdeiros</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/FGALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB FGALB/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 5) == "FGALB") {
       echo "<dc:creator>Foto Gomes. 1935-</dc:creator>";
     }
-    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT/CMALB/AO/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT CMALB AO/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 2) == "AO") {
       echo "<dc:creator>O Arauto de Osseloa</dc:creator>";
     }
-    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/FAPS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB FAPS/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 4) == "FAPS") {
       echo "<dc:creator>Silva, Fernando Augusto Pereira da. 1954-2010, arqueólogo</dc:creator>";
     }
-    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT/CMALB/JFP" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT CMALB JFP") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 3) == "JFP") {
       echo "<dc:creator>Pinto, João Ferreira. 1895-1961, fotógrafo amador</dc:creator>";
     }
-    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/JGS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB JGS/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 3) == "JGS") {
       echo "<dc:creator>Soares, João Gomes. 1882-1935, desenhador</dc:creator>";
     }
-    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/JBSC/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB JBSC/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 4) == "JBSC") {
       echo "<dc:creator>Cabral, José Bernardo da Silva. 1801-1869</dc:creator>";
     }
-    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT/CMALB/MS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT CMALB MS/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 2) == "MS") {
       echo "<dc:creator>Silva, Miguel da. 1864-[post. 1920], moleiro</dc:creator>";
     }
-    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/RJSPP/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB RJSPP/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 5) == "RJSPP") {
       echo "<dc:creator>Pinto, Rui Jorge da Silva Pereira. [19--]- , albergariense</dc:creator>";
     }
-    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/VFS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB VFS/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 3) == "VFS") {
       echo "<dc:creator>Silva, Vicente Ferreira da. 1918-2008, encarregado geral</dc:creator>";
     }
-    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 11) == "PT/CMALB/NI" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/RDALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/BPALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/FALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 11) == "PT CMALB NI" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB RDALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB BPALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB FALB") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 2) == "NI" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 5) == "RDALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 5) == "BPALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 4) == "FALB") {
       echo "<dc:creator>Câmara Municipal de Albergaria-a-Velha. 1835-</dc:creator>";
     }
   ?>
