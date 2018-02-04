@@ -45,15 +45,29 @@ foreach ($dc->coverage as $locais)
     foreach ($dc->subject as $assuntos)
  {
     }
+if (!empty(esc_specialchars(strval($resource->scopeAndContent))) and isset($locais) ) {
+echo str_replace("\n", " • ", esc_specialchars(strval($resource->scopeAndContent))) .  " • ";
+} else {
 echo str_replace("\n", " • ", esc_specialchars(strval($resource->scopeAndContent)));
-
+}
 if (isset($locais)) {
-echo " • Áreas geográficas e topónimos: ";
+echo "Áreas geográficas e topónimos: ";
 echo esc_specialchars(strval($locais));
 }
+if (isset($assuntos) and !empty(esc_specialchars(strval($resource->scopeAndContent)))) {
+echo " • ";
+}
+
+if (isset($locais) and isset($assuntos) and empty(esc_specialchars(strval($resource->scopeAndContent))) ) {
+echo " • ";
+}
+
 if (isset($assuntos)) {
-echo " • Assuntos: ";
+echo "Assuntos: ";
 echo esc_specialchars(strval($assuntos));
+}
+if (!empty($locais) or !empty($assuntos)) {
+echo ".";
 }
 ?></dc:subject>
 
