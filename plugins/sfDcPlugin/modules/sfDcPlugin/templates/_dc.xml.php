@@ -278,7 +278,7 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
 <?php
     foreach ($resource->getCreators() as $item) {
     }
-    if (isset($item)) {
+    if (!empty($item)) {
       echo "<dc:creator>";
       echo esc_specialchars(strval($item));
       echo "</dc:creator>";
@@ -382,31 +382,31 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/FGALB/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB FGALB/") {
       echo "<dc:creator>Foto Gomes. 1935-</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT/CMALB/AO/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT CMALB AO/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT/CMALB/AO/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT CMALB AO/") {
       echo "<dc:creator>O Arauto de Osseloa</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/FAPS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB FAPS/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/FAPS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB FAPS/") {
       echo "<dc:creator>Silva, Fernando Augusto Pereira da. 1954-2010, arqueólogo</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/JFP/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB JFP/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT/CMALB/JFP" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT CMALB JFP") {
       echo "<dc:creator>Pinto, João Ferreira. 1895-1961, fotógrafo amador</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/JGS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB JGS/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/JGS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB JGS/") {
       echo "<dc:creator>Soares, João Gomes. 1882-1935, desenhador</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/JBSC/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB JBSC/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/JBSC/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB JBSC/") {
       echo "<dc:creator>Cabral, José Bernardo da Silva. 1801-1869</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT/CMALB/MS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT CMALB MS/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT/CMALB/MS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 12) == "PT CMALB MS/") {
       echo "<dc:creator>Silva, Miguel da. 1864-[post. 1920], moleiro</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/RJSPP/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB RJSPP/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT/CMALB/RJSPP/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 15) == "PT CMALB RJSPP/") {
       echo "<dc:creator>Pinto, Rui Jorge da Silva Pereira. [19--]- , albergariense</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/VFS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB VFS/") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/VFS/" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB VFS/") {
       echo "<dc:creator>Silva, Vicente Ferreira da. 1918-2008, encarregado geral</dc:creator>";
     }
-    if (!isset($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 11) == "PT/CMALB/NI" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/RDALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/BPALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/FALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 11) == "PT CMALB NI" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB RDALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB BPALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB FALB") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 11) == "PT/CMALB/NI" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/RDALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT/CMALB/BPALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT/CMALB/FALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 11) == "PT CMALB NI" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB RDALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 14) == "PT CMALB BPALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 13) == "PT CMALB FALB") {
       echo "<dc:creator>Câmara Municipal de Albergaria-a-Velha. 1835-</dc:creator>";
     }
   ?>
