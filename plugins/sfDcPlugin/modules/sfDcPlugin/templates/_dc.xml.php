@@ -163,15 +163,11 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
       echo "<dc:date>" . date('Y-m-d', strtotime($item1)) . "</dc:date>";
       echo "<dc:date>" . date('Y-m-d', strtotime($item1)) . "</dc:date>";
     }
-    if (intval($rest = substr(phpversion(), 0, 1)) > 6 and strlen(esc_specialchars(strval($item1))) > 6 and strlen(esc_specialchars(strval($item1))) < 11 and (substr(esc_specialchars(strval($item1)), 1, 1) == "/" or substr(esc_specialchars(strval($item1)), 2, 1) == "/")) {
+    if (strlen(esc_specialchars(strval($item1))) > 6 and strlen(esc_specialchars(strval($item1))) < 11 and (substr(esc_specialchars(strval($item1)), 1, 1) == "/" or substr(esc_specialchars(strval($item1)), 2, 1) == "/")) {
     $date = $item1;
     $date = str_replace('/', '-', $date);
       echo "<dc:date>" . date('Y-m-d', strtotime($date)) . "</dc:date>";
       echo "<dc:date>" . date('Y-m-d', strtotime($date)) . "</dc:date>";
-    }
-    if (intval($rest = substr(phpversion(), 0, 1)) < 6 and strlen(esc_specialchars(strval($item1))) > 6 and strlen(esc_specialchars(strval($item1))) < 11 and (substr(esc_specialchars(strval($item1)), 1, 1) == "/" or substr(esc_specialchars(strval($item1)), 2, 1) == "/")) {
-      echo "<dc:date>" . date('Y-d-m', strtotime($item1)) . "</dc:date>";
-      echo "<dc:date>" . date('Y-d-m', strtotime($item1)) . "</dc:date>";
     }
     if ($rest = substr(esc_specialchars(strval($item1)), 0, 10) == date('Y-m-d', $rest = strtotime(substr(esc_specialchars(strval($item1)), 0, 10))) and (substr(esc_specialchars(strval($item1)), 12, 1) . substr(esc_specialchars(strval($item1)), 7, 1) . substr(esc_specialchars(strval($item1)), 4, 1)) != "---") {
       echo "<dc:date>" . $rest = substr(esc_specialchars(strval($item1)), 0, 10) . "</dc:date>";
