@@ -226,7 +226,6 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     }
     if (esc_specialchars(strval($item1)) == date('Y-m-d', strtotime($item1))) {
       echo "<dc:date>" . esc_specialchars(strval($item1)) . "</dc:date>";
-      echo "<dc:date>" . esc_specialchars(strval($item1)) . "</dc:date>";
     }
   ?>
 
