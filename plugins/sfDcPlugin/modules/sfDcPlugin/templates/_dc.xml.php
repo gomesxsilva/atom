@@ -162,19 +162,19 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     {
       echo "<dc:date>" . "1801" . "</dc:date>";
     }
-    if (strlen(esc_specialchars(strval($item1))) > 6 and strlen(esc_specialchars(strval($item1))) < 11 and stripos(strtolower(strval("##" . $item1)), 'c.') == false and stripos(strtolower(strval("##" . $item1)), 'ca.') == false and (substr(esc_specialchars(strval($item1)), 1, 1) == "-" or substr(esc_specialchars(strval($item1)), 1, 1) == "." or substr(esc_specialchars(strval($item1)), 2, 1) == "-" or substr(esc_specialchars(strval($item1)), 2, 1) == "."))
+    if (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and strlen(esc_specialchars(strval($item1))) > 6 and strlen(esc_specialchars(strval($item1))) < 11 and stripos(strtolower(strval("##" . $item1)), 'c.') == false and stripos(strtolower(strval("##" . $item1)), 'ca.') == false and (substr(esc_specialchars(strval($item1)), 1, 1) == "-" or substr(esc_specialchars(strval($item1)), 1, 1) == "." or substr(esc_specialchars(strval($item1)), 2, 1) == "-" or substr(esc_specialchars(strval($item1)), 2, 1) == "."))
     {
       echo "<dc:date>" . date('Y-m-d', strtotime($item1)) . "</dc:date>";
       echo "<dc:date>" . date('Y-m-d', strtotime($item1)) . "</dc:date>";
     }
-    if (strlen(esc_specialchars(strval($item1))) > 6 and strlen(esc_specialchars(strval($item1))) < 11 and (substr(esc_specialchars(strval($item1)), 1, 1) == "/" or substr(esc_specialchars(strval($item1)), 2, 1) == "/"))
+    if (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and strlen(esc_specialchars(strval($item1))) > 6 and strlen(esc_specialchars(strval($item1))) < 11 and (substr(esc_specialchars(strval($item1)), 1, 1) == "/" or substr(esc_specialchars(strval($item1)), 2, 1) == "/"))
     {
       $date = $item1;
       $date = str_replace('/', '-', $date);
       echo "<dc:date>" . date('Y-m-d', strtotime($date)) . "</dc:date>";
       echo "<dc:date>" . date('Y-m-d', strtotime($date)) . "</dc:date>";
     }
-    if ($rest = substr(esc_specialchars(strval($item1)), 0, 10) == date('Y-m-d', $rest = strtotime(substr(esc_specialchars(strval($item1)), 0, 10))) and (substr(esc_specialchars(strval($item1)), 12, 1) . substr(esc_specialchars(strval($item1)), 7, 1) . substr(esc_specialchars(strval($item1)), 4, 1)) != "---")
+    if (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and $rest = substr(esc_specialchars(strval($item1)), 0, 10) == date('Y-m-d', $rest = strtotime(substr(esc_specialchars(strval($item1)), 0, 10))) and (substr(esc_specialchars(strval($item1)), 12, 1) . substr(esc_specialchars(strval($item1)), 7, 1) . substr(esc_specialchars(strval($item1)), 4, 1)) != "---")
     {
       echo "<dc:date>" . $rest = substr(esc_specialchars(strval($item1)), 0, 10) . "</dc:date>";
     }
@@ -217,7 +217,7 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
       echo "<dc:date>" . $rest = substr(esc_specialchars(strval($item1)), stripos(strtolower(strval($item1)), $resultf[0]), stripos(strtolower(strval($item1)), '-?]') - stripos(strtolower(strval($item1)), $resultf[0])) . "9" . "</dc:date>";
     }
   ?>
-  
+
   <?php
     foreach ($dc->date as $item1)
     {
@@ -231,11 +231,11 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     {
       echo "<dc:date>" . "1900" . "</dc:date>";
     }
-    if ($rest = substr(esc_specialchars(strval($item1)), 11, 10) == date('Y-m-d', $rest = strtotime(substr(esc_specialchars(strval($item1)), 11, 10))))
+    if (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and $rest = substr(esc_specialchars(strval($item1)), 11, 10) == date('Y-m-d', $rest = strtotime(substr(esc_specialchars(strval($item1)), 11, 10))))
     {
       echo "<dc:date>" . $rest = substr(esc_specialchars(strval($item1)), 11, 10) . "</dc:date>";
     }
-    if ($rest = substr(esc_specialchars(strval($item1)), 13, 10) == date('Y-m-d', $rest = strtotime(substr(esc_specialchars(strval($item1)), 13, 10))))
+    if (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and $rest = substr(esc_specialchars(strval($item1)), 13, 10) == date('Y-m-d', $rest = strtotime(substr(esc_specialchars(strval($item1)), 13, 10))))
     {
       echo "<dc:date>" . $rest = substr(esc_specialchars(strval($item1)), 13, 10) . "</dc:date>";
     }
@@ -243,7 +243,7 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     {
       echo "<dc:date>" . strrev($results[0]) . "</dc:date>";
     }
-    if (esc_specialchars(strval($item1)) == date('Y-m-d', strtotime($item1)))
+    if (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and esc_specialchars(strval($item1)) == date('Y-m-d', strtotime($item1)))
     {
       echo "<dc:date>" . esc_specialchars(strval($item1)) . "</dc:date>";
     }
@@ -475,7 +475,7 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 3) == "VFS") {
       echo "<dc:creator>Silva, Vicente Ferreira da. 1918-2008, encarregado geral</dc:creator>";
     }
-    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 2) == "NI" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 5) == "RDALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 5) == "BPALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 0, 4) == "FALB") {
+    if (empty($item) and $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 2) == "NI" or $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 5) == "RDALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 5) == "BPALB" or $rest = substr(esc_specialchars(strval($dc->identifier)), 9, 4) == "FALB") {
       echo "<dc:creator>Câmara Municipal de Albergaria-a-Velha. 1835-</dc:creator>";
     }
   ?>
