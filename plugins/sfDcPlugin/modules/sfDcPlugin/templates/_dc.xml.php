@@ -158,8 +158,9 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     foreach ($resource->getDates() as $item2)
     {
     }
-    $results = array();
-    preg_match('/[0-9]{4}/', strval($item1), $results);
+    preg_match('/[0-9]{4}/', strval($item1), $aaaa);
+    preg_match('/[0-9]{3}/', strval($item1), $aaa);
+    preg_match('/[0-9]{2}/', strval($item1), $aa);
     if (!isset($item1) and !isset($item2->startDate) and !isset($item2->endDate))
     {
       echo "<dc:date>" . "1801" . "</dc:date>";
@@ -171,8 +172,7 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     }
     if (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and strlen(esc_specialchars(strval($item1))) > 6 and strlen(esc_specialchars(strval($item1))) < 11 and (substr(esc_specialchars(strval($item1)), 1, 1) == "/" or substr(esc_specialchars(strval($item1)), 2, 1) == "/"))
     {
-      $date = $item1;
-      $date = str_replace('/', '-', $date);
+      $date = str_replace('/', '-', $item1);
       echo "<dc:date>" . date('Y-m-d', strtotime($date)) . "</dc:date>";
       echo "<dc:date>" . date('Y-m-d', strtotime($date)) . "</dc:date>";
     }
@@ -182,41 +182,31 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     }
     if (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and (stripos(strtolower(strval($item1)), '--]') == false or stripos(strtolower(strval($item1)), '--]') > 5) and (stripos(strtolower(strval($item1)), '--?]') == false or stripos(strtolower(strval($item1)), '--?]') > 5) and (stripos(strtolower(strval($item1)), '-]') == false or stripos(strtolower(strval($item1)), '-]') > 5) and (stripos(strtolower(strval($item1)), '-?]') == false or stripos(strtolower(strval($item1)), '-?]') > 5) and ($rest = substr(esc_specialchars(strval($item1)), 0, 10) != date('Y-m-d', $rest = strtotime(substr(esc_specialchars(strval($item1)), 0, 10))) or (substr(esc_specialchars(strval($item1)), 12, 1) . substr(esc_specialchars(strval($item1)), 7, 1) . substr(esc_specialchars(strval($item1)), 4, 1)) == "---") and esc_specialchars(strval($item1)) != (strlen(esc_specialchars(strval($item1))) > 6 and strlen(esc_specialchars(strval($item1))) < 11 and (substr(esc_specialchars(strval($item1)), 1, 1) == "-" or substr(esc_specialchars(strval($item1)), 1, 1) == "/" or (substr(esc_specialchars(strval($item1)), 1, 1) == "." and substr(esc_specialchars(strval($item1)), 1, 1) != "c" and substr(esc_specialchars(strval($item1)), 0, 1) != "c") or substr(esc_specialchars(strval($item1)), 2, 1) == "-" or substr(esc_specialchars(strval($item1)), 2, 1) == "/" or (substr(esc_specialchars(strval($item1)), 2, 1) == "." and substr(esc_specialchars(strval($item1)), 1, 1) != "c" and substr(esc_specialchars(strval($item1)), 0, 1) != "c"))))
     {
-      echo "<dc:date>" . $results[0] . "</dc:date>";
+      echo "<dc:date>" . $aaaa[0] . "</dc:date>";
     }
     if (!isset($item2->startDate) and !isset($item2->endDate) and stripos(strtolower(strval($item1)), '--]') !== false)
     {
-      $resulti = array();
-      preg_match('/[0-9]{2}/', strval($item1), $resulti);
-      $tempo   = $rest = substr(esc_specialchars(strval($item1)), stripos(strtolower(strval($item1)), $resulti[0]), stripos(strtolower(strval($item1)), '--]') - stripos(strtolower(strval($item1)), $resulti[0])) . "00";
-      $resulty = array();
-      preg_match('/[0-9]{4}/', strval($tempo), $resulty);
-      echo "<dc:date>" . ($resulty[0] + 1) . "</dc:date>";
-      echo "<dc:date>" . ($resulty[0] + 100) . "</dc:date>";
+      $datacerta   = $rest = substr(esc_specialchars(strval($item1)), stripos(strtolower(strval($item1)), $aa[0]), stripos(strtolower(strval($item1)), '--]') - stripos(strtolower(strval($item1)), $aa[0])) . "00";
+      preg_match('/[0-9]{4}/', strval($datacerta), $aaaacerta);
+      echo "<dc:date>" . ($aaaacerta[0] + 1) . "</dc:date>";
+      echo "<dc:date>" . ($aaaacerta[0] + 100) . "</dc:date>";
     }
     elseif (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and stripos(strtolower(strval($item1)), '-]') !== false)
     {
-      $resulta = array();
-      preg_match('/[0-9]{3}/', strval($item1), $resulta);
-      echo "<dc:date>" . $rest = substr(esc_specialchars(strval($item1)), stripos(strtolower(strval($item1)), $resulta[0]), stripos(strtolower(strval($item1)), '-]') - stripos(strtolower(strval($item1)), $resulta[0])) . "0" . "</dc:date>";
-      echo "<dc:date>" . $rest = substr(esc_specialchars(strval($item1)), stripos(strtolower(strval($item1)), $resulta[0]), stripos(strtolower(strval($item1)), '-]') - stripos(strtolower(strval($item1)), $resulta[0])) . "9" . "</dc:date>";
+      echo "<dc:date>" . $rest = substr(esc_specialchars(strval($item1)), stripos(strtolower(strval($item1)), $aaa[0]), stripos(strtolower(strval($item1)), '-]') - stripos(strtolower(strval($item1)), $aaa[0])) . "0" . "</dc:date>";
+      echo "<dc:date>" . $rest = substr(esc_specialchars(strval($item1)), stripos(strtolower(strval($item1)), $aaa[0]), stripos(strtolower(strval($item1)), '-]') - stripos(strtolower(strval($item1)), $aaa[0])) . "9" . "</dc:date>";
     }
     if (!isset($item2->startDate) and !isset($item2->endDate) and (stripos(strtolower(strval($item1)), '--]') == false or stripos(strtolower(strval($item1)), '--]') < 6) and (stripos(strtolower(strval($item1)), '--?]') == false or stripos(strtolower(strval($item1)), '--?]') < 6) and (stripos(strtolower(strval($item1)), '-]') == false or stripos(strtolower(strval($item1)), '-]') < 6) and (stripos(strtolower(strval($item1)), '-?]') == false or stripos(strtolower(strval($item1)), '-?]') < 6) and stripos(strtolower(strval($item1)), '--?]') !== false)
     {
-      $resultz = array();
-      preg_match('/[0-9]{2}/', strval($item1), $resultz);
-      $tempo   = $rest = substr(esc_specialchars(strval($item1)), stripos(strtolower(strval($item1)), $resultz[0]), stripos(strtolower(strval($item1)), '--?]') - stripos(strtolower(strval($item1)), $resultz[0])) . "00";
-      $results = array();
-      preg_match('/[0-9]{4}/', strval($tempo), $results);
-      echo "<dc:date>" . ($results[0] + 1) . "</dc:date>";
-      echo "<dc:date>" . ($results[0] + 100) . "</dc:date>";
+      $dataincerta   = $rest = substr(esc_specialchars(strval($item1)), stripos(strtolower(strval($item1)), $aa[0]), stripos(strtolower(strval($item1)), '--?]') - stripos(strtolower(strval($item1)), $aa[0])) . "00";
+      preg_match('/[0-9]{4}/', strval($dataincerta), $aaaaincerta);
+      echo "<dc:date>" . ($aaaaincerta[0] + 1) . "</dc:date>";
+      echo "<dc:date>" . ($aaaaincerta[0] + 100) . "</dc:date>";
     }
     elseif (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and stripos(strtolower(strval($item1)), '-?]') !== false and stripos(strtolower(strval($item1)), ']- [') == false and stripos(strtolower(strval($item1)), ']-[') == false)
     {
-      $resultf = array();
-      preg_match('/[0-9]{3}/', strval($item1), $resultf);
-      echo "<dc:date>" . $rest = substr(esc_specialchars(strval($item1)), stripos(strtolower(strval($item1)), $resultf[0]), stripos(strtolower(strval($item1)), '-?]') - stripos(strtolower(strval($item1)), $resultf[0])) . "0" . "</dc:date>";
-      echo "<dc:date>" . $rest = substr(esc_specialchars(strval($item1)), stripos(strtolower(strval($item1)), $resultf[0]), stripos(strtolower(strval($item1)), '-?]') - stripos(strtolower(strval($item1)), $resultf[0])) . "9" . "</dc:date>";
+      echo "<dc:date>" . $rest = substr(esc_specialchars(strval($item1)), stripos(strtolower(strval($item1)), $aaa[0]), stripos(strtolower(strval($item1)), '-?]') - stripos(strtolower(strval($item1)), $aaa[0])) . "0" . "</dc:date>";
+      echo "<dc:date>" . $rest = substr(esc_specialchars(strval($item1)), stripos(strtolower(strval($item1)), $aaa[0]), stripos(strtolower(strval($item1)), '-?]') - stripos(strtolower(strval($item1)), $aaa[0])) . "9" . "</dc:date>";
     }
   ?>
 
@@ -227,8 +217,7 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     foreach ($resource->getDates() as $item2)
     {
     }
-    $results = array();
-    preg_match('/[0-9]{4}/', strrev(strval($item1)), $results);
+    preg_match('/[0-9]{4}/', strrev(strval($item1)), $aaaa);
     if (!isset($item1) and !isset($item2->startDate) and !isset($item2->endDate))
     {
       echo "<dc:date>" . "1900" . "</dc:date>";
@@ -243,7 +232,7 @@ substr(esc_specialchars(strval(Qubit::renderDate($itema->startDate))), 4, 1) == 
     }
     if (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and $rest = substr(esc_specialchars(strval($item1)), 11, 10) != date('Y-m-d', $rest = strtotime(substr(esc_specialchars(strval($item1)), 11, 10))) and $rest = substr(esc_specialchars(strval($item1)), 13, 10) != date('Y-m-d', $rest = strtotime(substr(esc_specialchars(strval($item1)), 13, 10))) and (stripos(strtolower(strval($item1)), '-]') == false or stripos(strtolower(strval($item1)), '-]') > 5) and (stripos(strtolower(strval($item1)), '-?]') == false or stripos(strtolower(strval($item1)), '-?]') > 5) and esc_specialchars(strval($item1)) != date('Y-m-d', strtotime($item1)) and esc_specialchars(strval($item1)) != (strlen(esc_specialchars(strval($item1))) > 6 and strlen(esc_specialchars(strval($item1))) < 11 and (substr(esc_specialchars(strval($item1)), 1, 1) == "-" or substr(esc_specialchars(strval($item1)), 1, 1) == "/" or substr(esc_specialchars(strval($item1)), 1, 1) == "." or substr(esc_specialchars(strval($item1)), 2, 1) == "-" or substr(esc_specialchars(strval($item1)), 2, 1) == "/" or substr(esc_specialchars(strval($item1)), 2, 1) == ".")))
     {
-      echo "<dc:date>" . strrev($results[0]) . "</dc:date>";
+      echo "<dc:date>" . strrev($aaaa[0]) . "</dc:date>";
     }
     if (isset($item1) and !isset($item2->startDate) and !isset($item2->endDate) and esc_specialchars(strval($item1)) == date('Y-m-d', strtotime($item1)))
     {
