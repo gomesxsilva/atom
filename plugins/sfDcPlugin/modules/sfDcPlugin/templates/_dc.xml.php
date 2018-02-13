@@ -45,10 +45,12 @@ foreach ($dc->coverage as $locais)
     foreach ($dc->subject as $assuntos)
  {
     }
+$searchArray = array(".\n", ":\n\n", ":\n-", ":\nSR:", "\nSR:", ";\n-", "\n-", "\n\n");
+$replaceArray = array(". ", ": ", ": ", ": SR:", "; SR:", "; ", " -", " • ");
 if (!empty(esc_specialchars(strval($resource->scopeAndContent))) and isset($locais) ) {
-echo str_replace("\n", " • ", esc_specialchars(strval($resource->scopeAndContent))) .  " • ";
+echo str_replace($searchArray, $replaceArray, esc_specialchars(strval($resource->scopeAndContent))) .  " • ";
 } else {
-echo str_replace("\n", " • ", esc_specialchars(strval($resource->scopeAndContent)));
+echo str_replace($searchArray, $replaceArray, esc_specialchars(strval($resource->scopeAndContent)));
 }
 if (isset($locais)) {
 echo "Áreas geográficas e topónimos: ";
